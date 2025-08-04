@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マップ情報システム</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="BottomSheet.css">
+</head>
+<body>
+    <div class="pageHeader">
+        <h1 class="pageHeader_main"><span>キャンパスマップ</span></h1>
+        <div class="pageHeader_sub">Campus Map</div>
+    </div>
+
+    <h2 class="campusMap_Head"><span>旦野原キャンパスマップ</span></h2>
+
+    <header>
+        <input type="text" id="searchBox" placeholder="検索（例: 情報1）">
+        <button id="searchButton">検索</button>
+        <div id="searchResults" class="search-results"></div><br>
+    </header>
+
+
+    <!-- マップとパネルを包むコンテナを追加 -->
+    <div class="content-wrapper">
+        <div class="map-container">
+            <img src="assets/campusmap.png" alt="マップ画像" class="map-image">
+            <div id="markers"></div>
+        </div>
+
+        <div id="infoPanel" class="info-panel">
+            <div class="info-header">
+                <div class="info-title">
+                    <span class="info-number" id="infoNumber"></span>
+                    <span class="info-name" id="infoName"></span>
+                </div>
+                <div class="info-controls">
+                    <button id="minimizeBtn">━</button>
+                    <button id="closeBtn">✖</button>
+                    <span class="panel-navigation-button">📍</span>
+                </div>
+            </div>
+            <div class="info-content" id="infoContent"></div>
+        </div>
+    </div>
+
+    <!-- ボトムシート（モバイル用） -->
+    <div class="bottom-sheet">
+        <div><span class="sheet-drag-bar"></span></div>
+        <div class="sheet-header">
+            <div class="sheet-icons">
+                <span class="navigation-button">📍</span>
+                <span class="close-button">❌</span>
+            </div>
+        </div>
+
+        <div class="buttom-wrapper">
+            <div class="content">
+                <div class="info-title">
+                    <span class="info-number" id="infoNumber"></span>
+                    <span class="info-name" id="infoName"></span>
+                </div>
+                <div class="info-content" id="infoContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mask"></div>
+
+    <script src="app.js"></script>
+    <script src="BottomSheet.js"></script>
+    <script>
+        fetch("https://checkip.amazonaws.com")
+          .then(res => res.text())
+          .then(ip => {
+            const allowedPrefixes = ["133.37.", "202.253."];  // 複数Wi-Fi対応 OU-WLANとeduroam
+            ip = ip.trim();
+            // allowedPrefixesの中にipの先頭一致があるか？
+            const isAllowed = allowedPrefixes.some(prefix => ip.startsWith(prefix));
+      
+            if (!isAllowed) {
+              alert("このアプリは大学のWi-Fiからのみ利用できます。");
+              document.body.innerHTML = "<h2 style='text-align:center;margin-top:30px;'>このネットワークではアクセスできません。</h2>";
+            }
+          })
+          .catch(() => {
+            document.body.innerHTML = "<h2 style='text-align:center;margin-top:30px;'>ネットワーク確認に失敗しました。</h2>";
+          });
+      </script>      
+</body>
+</html>

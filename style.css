@@ -1,0 +1,589 @@
+/* =======================
+    フォント設定
+   ======================= */
+@font-face {
+	font-family: YuGothic M;
+	src: local("Yu Gothic Medium");
+}
+
+/* 平面図モーダル用スタイル */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 0;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    max-height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 10000;
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/*平面図のボタン*/
+.floor-button {
+    touch-action: manipulation;
+    background: none;
+    border: 1px solid #aaa;
+    color: #333;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* =======================
+    基本レイアウト
+   ======================= */
+/* ページ全体の基本設定 */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+}
+/* 基本フォントとレイアウトの設定 */
+body {
+    font-family: 'YuGothic M', 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+}
+
+/* =======================
+    ヘッダー部分のスタイル
+   ======================= */
+/* ヘッダーコンテナ */
+header {
+    width: 95%;
+    padding: 10px;
+    background: #f8f8f8;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+/* ページヘッダーのスタイル */
+.pageHeader {
+	text-align: center;
+}
+/* メインタイトルのスタイル */
+.pageHeader .pageHeader_main {
+	color: #00264e;
+	position: relative;
+}
+/* 英語版ページでのタイトル調整 */
+/* 英語版ページは実装してない */
+.page_en .pageHeader .pageHeader_main {
+	letter-spacing: 1px;
+}
+/* タイトルの背景と装飾 */
+.pageHeader .pageHeader_main > span {
+	display: inline-block;
+	background-color: white;
+	padding: 0 15px;
+	position: relative;
+	z-index: 1;
+}
+/* タイトルの下線装飾 */
+.pageHeader .pageHeader_main:before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	z-index: -1;
+}
+/* サブタイトル（英語）のスタイル */
+.pageHeader .pageHeader_sub {
+	display: block;
+	color: #727066;
+	font-family: Georgia, Times New Roman, Hiragino Kaku Gothic Pro, Meiryo,
+		sans-serif;
+	font-style: italic;
+}
+
+/* =======================
+    キャンパスマップヘッダー
+   ======================= */
+/* キャンパスマップのヘッダースタイル */
+.campusMap_Head {
+    text-align: center;
+    margin-bottom: 30px;
+}
+/* キャンパスマップのタイトル装飾 */
+.campusMap_Head > span {
+    display: inline-block;
+    padding: 0 30px;
+    font-size: 18px;
+    font-size: 1.125rem;
+    letter-spacing: 1px;
+    line-height: 44px;
+    color: #fff;
+    background-color: #00274f;
+    border-radius: 22px;
+}
+
+/* =======================
+    検索ボックスのスタイル
+   ======================= */
+/* 検索入力フィールド */
+#searchBox {
+    width: 70%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+/* 検索ボタン */
+#searchButton {
+    padding: 8px 12px;
+    font-size: 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+/* 検索ボタンのホバー効果 */
+#searchButton:hover {
+    background: #0056b3;
+}
+
+/* タグボタン */
+#tagButton {
+    padding: 6px 12px;
+    font-size: 16px;
+    background: #acb5c7;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+/* タグボタンのホバー効果 */
+#tagButton:hover {
+    background: #67677b;
+}
+
+/* 検索結果のスタイル */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background-color: #f5f5f5;
+}
+
+.search-result-item .result-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #333;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.search-result-item .result-title {
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+/* =======================
+    コンテンツレイアウト
+   ======================= */
+/* マップと情報パネルを包むコンテナ */
+.content-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    max-width: 100vw;
+}
+/* 情報パネルが表示されている時のレイアウト調整 */
+.content-wrapper.panel-active {
+    margin-left: 400px; /* パネルの幅分ずらす */
+}
+
+/* =======================
+    マップ表示エリア
+   ======================= */
+/* マップコンテナ */
+.map-container {
+    position: relative;
+    max-width: 1084px;
+    margin-top: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+/* マップ画像 */
+/**
+ * PCデバイスでは800px
+ * モバイルデバイスでは600px
+ */
+.map-image {
+    width: 100%;
+    min-width: 600px;
+    height: auto;
+    display: inline-block;
+}
+/* マーカーを配置するコンテナ */
+#markers {
+    position: absolute; /* 地図上に配置 */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* マーカー以外のイベントを通さない */
+}
+/* マーカーのスタイル */
+.marker {
+    position: absolute; /* JavaScript で座標指定 */
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto; /* クリックを有効化 */
+}
+/* マーカー番号の下線 */
+.marker span {
+    text-decoration: underline;
+}
+/* マーカーホバー時の下線を消す */
+.marker:hover span {
+    text-decoration: none;
+}
+
+/* =======================
+    情報パネル
+   ======================= */
+/* 情報パネルの基本スタイル */
+.info-panel {
+    position: fixed;
+    top: 0;
+    left: -400px; /* 初期状態では画面外に配置 */
+    width: 350px;
+    height: 100vh;
+    background-color: white;
+    border-right: 2px solid #ccc;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    z-index: 1000;
+}
+/* パネル表示時のスタイル */
+.info-panel.active {
+    left: 0;
+}
+/* パネルヘッダー */
+.info-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1001;
+}
+/* 建物タイトルと番号とタグのレイアウト */
+.info-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* 建物番号の円形表示 */
+.info-number {
+    width: 30px;
+    height: 30px;
+    background: #333;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+/* 建物名のスタイル */
+.info-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+/* 建物タグのスタイル */
+.info-tag {
+    background: #acb5c7;
+    font-size: 15px;
+    font-weight: bold;
+}
+/* パネル操作ボタンのレイアウト */
+.info-controls {
+    display: flex;
+    gap: 8px; /* ボタン間の間隔を調整 */
+    margin-left: 10px; /* タイトルとの間隔を確保 */
+}
+/* 最小化・閉じるボタンのスタイル */
+#minimizeBtn, #closeBtn {
+    background: #ddd;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* ボタンホバー時の効果 */
+#closeBtn:hover, #minimizeBtn:hover {
+    background: #bbb;
+}
+/* パネルコンテンツエリア */
+.info-content {
+    flex-grow: 1;
+    padding: 0px;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+/* 情報画像のスタイル */
+.info-image {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+/* =======================
+    パネル最小化時のスタイル
+   ======================= */
+/* 最小化時のパネル幅 */
+.info-panel.minimized {
+    width: 50px; /* ボタンが収まる幅に調整 */
+}
+/* 最小化時にコンテンツを非表示 */
+.info-panel.minimized .info-content {
+    display: none;
+}
+/* 最小化時にタイトルを非表示 */
+.info-panel.minimized .info-title {
+    display: none; /* info-titleを完全に非表示 */
+}
+/* 最小化時のヘッダー調整 */
+.info-panel.minimized .info-header {
+    padding: 5px; /* パディングを縮小 */
+}
+/* 最小化時のボタン配置 */
+.info-panel.minimized .info-controls {
+    margin: 0 auto; /* 中央寄せ */
+    flex-direction: column; /* ボタンを縦に配置 */
+    gap: 5px; /* ボタン間の間隔を調整 */
+}
+
+/* =======================
+    レスポンシブデザイン
+   ======================= */
+/* モバイル向けスタイル */
+@media only screen and (max-width: 768px) {
+    /* ページヘッダーのレイアウト調整 */
+    .pageHeader {
+		width: 95%;
+		margin: 0 auto 30px;
+	}
+    /* メインタイトルのフォントサイズ調整 */
+	.pageHeader .pageHeader_main {
+		font-size: 1.25rem;
+	}
+    /* サブタイトルのフォントサイズ調整 */
+	.pageHeader .pageHeader_sub {
+		font-size: 0.875rem;
+		margin-top: 12px;
+	}
+    /* マップコンテナの調整 */
+    .map-container {
+        border: 1px solid black;
+        max-width: 720px;
+        width: 90%;
+    }
+    /* マーカーのスタイル */
+    .marker {
+        width: 20px;
+        height: 20px;
+        border: 1px solid white;
+        font-size: 12px;
+    }
+    /* マーカー番号の下線 */
+    .marker span {
+        text-decoration: 1px underline;
+    }
+    /* 情報パネルをフルワイドに */
+    .info-panel {
+        width: 100%;
+        left: -100%;
+    }
+    /* パネル表示時のレイアウト調整 */
+    .content-wrapper.panel-active {
+        margin-left: 0;
+    }
+    /* 最小化時のパネル幅調整 */
+    .info-panel.minimized {
+        width: 60px;
+    }
+    .map-image {
+        width: 100%;
+        min-width: 720px;
+    }
+    .modal-content {
+        width: 95%;
+        height: 80vh;
+        max-height: none;
+    }
+}
+
+/* デスクトップ向けスタイル */
+@media print, screen and (min-width: 769px) {
+    /* ページヘッダーのレイアウト */
+    .pageHeader {
+        width: 95%;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+    /* メインタイトルのスタイル */
+    .pageHeader .pageHeader_main {
+        font-size: 1.75rem;
+        line-height: 1;
+        letter-spacing: 2px;
+    }
+    /* サブタイトルのスタイル */
+    .pageHeader .pageHeader_sub {
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+    /* マップコンテナの幅設定 */
+    .map-container {
+        width: 100%;
+    }
+    
+    /* デスクトップ用ナビゲーションボタン */
+    .panel-navigation-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.3s, transform 0.2s ease;
+    }
+
+    /* ホバー時に色が変わる */
+    .panel-navigation-button:hover {
+        background-color: #414141;
+    }
+    .map-image {
+        width: 1080px;
+        min-width: 1080px;
+    }
+}
