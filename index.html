@@ -70,23 +70,5 @@
 
     <script src="app.js"></script>
     <script src="BottomSheet.js"></script>
-    <script>
-        fetch("https://checkip.amazonaws.com")
-          .then(res => res.text())
-          .then(ip => {
-            const allowedPrefixes = ["133.37.", "202.253."];  // 複数Wi-Fi対応 OU-WLANとeduroam
-            ip = ip.trim();
-            // allowedPrefixesの中にipの先頭一致があるか？
-            const isAllowed = allowedPrefixes.some(prefix => ip.startsWith(prefix));
-      
-            if (!isAllowed) {
-              alert("このアプリは大学のWi-Fiからのみ利用できます。");
-              document.body.innerHTML = "<h2 style='text-align:center;margin-top:30px;'>このネットワークではアクセスできません。</h2>";
-            }
-          })
-          .catch(() => {
-            document.body.innerHTML = "<h2 style='text-align:center;margin-top:30px;'>ネットワーク確認に失敗しました。</h2>";
-          });
-      </script>      
 </body>
 </html>
